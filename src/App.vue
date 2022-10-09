@@ -1,28 +1,59 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+  },
+  data() {
+    return {
+      Share,
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.changeCss);
+    this.changeCss();
+  },
+  mounted() {
+    
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.changeCss);
+  },
+  methods: {
+    changeCss() {
+      let innerWidth = window.innerWidth;
+      let innerHeight = window.innerHeight;
+      let dom = document.getElementById("app");
+      let domW = dom.clientWidth;
+      let domH = dom.clientHeight;
+      let scaleX = innerWidth / domW;
+      let scaleY = ((domH / domW) * innerWidth) / domH;
+      let tranformOrigin = (innerHeight - (domH / domW) * innerWidth) / 2;
+      window.scale = [scaleX, scaleY];
+      let body = document.getElementsByTagName("body")[0];
+      body.style["transform"] = "scale(" + scaleX + "," + scaleY + ")";
+      body.style["-webkit-transform-origin-x"] = "left";
+      body.style["-webkit-transform-origin-y"] = tranformOrigin + "px";
+    },
+    close() {
+      window.parent.postMessage({"from":"thirdLevel", "type":"精准救助", "method": "close"}, "*");
+      // window.open("about:blank", "_self").close();
+    },
+  },
+  watch: {
+    "Share.mapLoad"(newVal, old) {
+      Share.mapLoad = true;
+      window.parent.postMessage({"from":"thirdLevel", "type":"精准救助", "method": "loaded"}, "*");
+    },
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less">
 </style>

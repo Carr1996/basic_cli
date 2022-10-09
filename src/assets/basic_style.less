@@ -1,0 +1,41 @@
+// 字体设置
+@font-face {
+  font-family: 'ShiShangZhongHeiJianTi';
+  src: url('./font_family/SHISHANGZHONGHEIJIANTI.TTF');
+}
+
+
+body {
+  margin: 0px;
+  width: 16384px;
+  height: 4320px;
+  overflow: hidden;
+  background-color: #0a222b;
+   -webkit-font-smoothing: subpixel-antialiased;
+
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(9, 230, 227, .5) !important;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: rgba(9, 230, 227, .7) !important;
+    }
+  }
+}
+
+#app {
+  color: white;
+  background-color: #0a222b;
+  width: 16384px;
+  height: 4320px;
+  position: relative;
+  font-size: 52px;
+  overflow: hidden;
+  user-select: none;
+  font-family: '微软雅黑', 'ShiShangZhongHeiJianTi';
+}
