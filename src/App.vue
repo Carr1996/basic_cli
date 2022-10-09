@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo" src="./assets/icon/logo.png">
+    <jump-number>100</jump-number>
   </div>
 </template>
 
 <script>
-
+import JumpNumber from '@components/common/JumpNumber'
 export default {
   name: 'App',
-  components: {
+  components: {JumpNumber
   },
   data() {
     return {
