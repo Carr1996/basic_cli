@@ -6,14 +6,15 @@
 </template>
 
 <script>
+import "./assets/basic_style.less";
 import JumpNumber from '@components/common/JumpNumber'
 export default {
   name: 'App',
-  components: {JumpNumber
+  components: {
+    JumpNumber
   },
   data() {
     return {
-      Share,
     };
   },
   created() {
@@ -43,15 +44,14 @@ export default {
       body.style["-webkit-transform-origin-y"] = tranformOrigin + "px";
     },
     close() {
-      window.parent.postMessage({"from":"thirdLevel", "type":"精准救助", "method": "close"}, "*");
-      // window.open("about:blank", "_self").close();
+      // window.parent.postMessage({"from":"thirdLevel", "type":"精准救助", "method": "close"}, "*");
     },
   },
   watch: {
-    "Share.mapLoad"(newVal, old) {
-      Share.mapLoad = true;
-      window.parent.postMessage({"from":"thirdLevel", "type":"精准救助", "method": "loaded"}, "*");
-    },
+    // "Share.mapLoad"(newVal, old) {
+    //   Share.mapLoad = true;
+    //   window.parent.postMessage({"from":"thirdLevel", "type":"精准救助", "method": "loaded"}, "*");
+    // },
   },
 }
 </script>
